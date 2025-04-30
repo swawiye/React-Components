@@ -1,8 +1,39 @@
 import Age from "./components/TernaryOperator";
+import Joke from "./components/Joke";
+import JokeForm from "./components/JokeForm";
+import { useState } from "react";
 
 function App() {
   const isLoggedIn = "true";
 
+  const [showForm, setShowForm] = useState(false);
+  const [jokes, setJokes] = useState([{
+    id: 1,
+    text: "I'm afraid for the calendar. Its days are numbered."
+  },
+  {
+    id: 2,
+    text: "I used to be addicted to soap, but I'm clean now."
+  }
+  ])
+
+  const handleAddJoke = (text) => {
+    const joke = {
+      text,
+      id: self.crypto.randomUUID(),
+      likes: 0
+    }
+    setJokes([joke, ...jokes])
+    setShowForm(false)
+  }
+
+  const handleDeleteJoke = (id) => {
+    setJokes(jokes.filter(joke => joke.id !== id))
+  }
+
+  const handleAddNewJoke = () => {
+    setShowForm(true)
+  }
   return (
     <>
     <h1>React Lesson One</h1>
@@ -18,6 +49,20 @@ function App() {
     </div>
 
     <Age/>
+
+    <div className="">
+      <h1>Dad Jokes</h1>
+
+      {showForm ?
+        <JokeForm onAddJoke={handleAddJoke} />
+        :
+        <>
+          <button onClick={handleAddNewJoke}>Add a new joke</button>
+          {jokes.map(joke => <Joke key={joke.id} {...joke} onDelete={handleDeleteJoke} />)}
+        </>
+      }
+
+    </div>
     </>
   )
 }
