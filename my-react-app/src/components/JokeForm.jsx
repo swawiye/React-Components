@@ -15,8 +15,6 @@ export default function JokeForm({ onAddJoke }) {
     setText("")
   }
 
-  
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="text">New Joke</label>

@@ -1,5 +1,5 @@
 function Age () {
-    const age = 15;
+    const age = 22;
 
     return (
         <div>
@@ -9,3 +9,4 @@ function Age () {
     )
 }
 export default Age;
+//{condition ? valueIfTrue : valueIfFalse};

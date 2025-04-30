@@ -34,6 +34,7 @@ function App() {
   const handleAddNewJoke = () => {
     setShowForm(true)
   }
+
   return (
     <>
     <h1>React Lesson One</h1>
@@ -51,14 +52,14 @@ function App() {
     <Age/>
 
     <div className="">
-      <h1>Dad Jokes</h1>
+      <h2>Jokes</h2>
 
       {showForm ?
-        <JokeForm onAddJoke={handleAddJoke} />
+        <JokeForm onAddJoke={handleAddJoke}/>
         :
         <>
           <button onClick={handleAddNewJoke}>Add a new joke</button>
-          {jokes.map(joke => <Joke key={joke.id} {...joke} onDelete={handleDeleteJoke} />)}
+          {jokes.map(joke => <Joke key={joke.id} {...joke} onDelete={handleDeleteJoke}/>)}
         </>
       }
 
